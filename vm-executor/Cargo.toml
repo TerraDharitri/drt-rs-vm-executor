@@ -1,11 +1,11 @@
 cargo-features = ["edition2024"]
 [package]
 name = "dharitri-vm-executor"
-version = "0.0.2"
+version = "0.0.1"
 edition = "2024"
 
 authors = [
-   "Dharitri <contact@dharitri.org>",
+        "Dharitri <contact@dharitri.org>",
 ]
 license = "GPL-3.0-only"
 readme = "README.md"

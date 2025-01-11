@@ -294,7 +294,7 @@ dependencies = [
 
 [[package]]
 name = "dharitri-vm-executor"
-version = "0.0.2"
+version = "0.0.1"
 
 [[package]]
 name = "dharitri-vm-executor-c-api"
@@ -307,12 +307,11 @@ dependencies = [
  "lazy_static",
  "libc",
  "log",
- "meta",
 ]
 
 [[package]]
 name = "dharitri-vm-executor-wasmer"
-version = "0.0.2"
+version = "0.0.1"
 dependencies = [
  "chrono",
  "dharitri-vm-executor",
@@ -680,14 +679,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5aa361d4faea93603064a027415f07bd8e1d5c88c9fbf68bf56a285428fd79ce"
 dependencies = [
  "autocfg",
-]
-
-[[package]]
-name = "meta"
-version = "0.1.0"
-dependencies = [
- "quote",
- "syn 2.0.96",
 ]
 
 [[package]]
@@ -1402,7 +1393,7 @@ dependencies = [
 [[package]]
 name = "wasmer"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "cfg-if",
  "indexmap 1.9.3",
@@ -1427,7 +1418,7 @@ dependencies = [
 [[package]]
 name = "wasmer-compiler"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "enumset",
  "loupe",
@@ -1445,7 +1436,7 @@ dependencies = [
 [[package]]
 name = "wasmer-compiler-singlepass"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "byteorder",
  "dynasm",
@@ -1463,7 +1454,7 @@ dependencies = [
 [[package]]
 name = "wasmer-derive"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "proc-macro-error",
  "proc-macro2",
@@ -1474,7 +1465,7 @@ dependencies = [
 [[package]]
 name = "wasmer-engine"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "backtrace",
  "enumset",
@@ -1495,7 +1486,7 @@ dependencies = [
 [[package]]
 name = "wasmer-engine-dylib"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "cfg-if",
  "enum-iterator",
@@ -1519,7 +1510,7 @@ dependencies = [
 [[package]]
 name = "wasmer-engine-universal"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "cfg-if",
  "enum-iterator",
@@ -1538,7 +1529,7 @@ dependencies = [
 [[package]]
 name = "wasmer-object"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "object 0.28.4",
  "thiserror",
@@ -1549,7 +1540,7 @@ dependencies = [
 [[package]]
 name = "wasmer-types"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "indexmap 1.9.3",
  "loupe",
@@ -1561,7 +1552,7 @@ dependencies = [
 [[package]]
 name = "wasmer-vm"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=cdd1550#cdd1550099c5f1e667126501885c88ff5bb8d760"
 dependencies = [
  "backtrace",
  "cc",
@@ -1583,7 +1574,8 @@ dependencies = [
 [[package]]
 name = "wasmparser"
 version = "0.78.2"
-source = "git+https://github.com/TerraDharitri/wasm-tools?rev=1c30dd6c7961ede5397d2f76709bcd71565afb76#1c30dd6c7961ede5397d2f76709bcd71565afb76"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "52144d4c78e5cf8b055ceab8e5fa22814ce4315d6002ad32cfd914f37c12fd65"
 
 [[package]]
 name = "wasmparser"

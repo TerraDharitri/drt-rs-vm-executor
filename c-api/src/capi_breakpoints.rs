@@ -1,4 +1,3 @@
-use meta::capi_safe_unwind;
 use dharitri_vm_executor::Instance;
 
 use crate::capi_instance::{vm_exec_instance_t, CapiInstance};
@@ -16,7 +15,6 @@ use crate::vm_exec_result_t;
 /// C API function, works with raw object pointers.
 #[allow(clippy::cast_ptr_alignment)]
 #[no_mangle]
-#[capi_safe_unwind(vm_exec_result_t::VM_EXEC_ERROR)]
 pub unsafe extern "C" fn vm_exec_instance_set_breakpoint_value(
     instance_ptr: *const vm_exec_instance_t,
     value: u64,
@@ -39,7 +37,6 @@ pub unsafe extern "C" fn vm_exec_instance_set_breakpoint_value(
 /// C API function, works with raw object pointers.
 #[allow(clippy::cast_ptr_alignment)]
 #[no_mangle]
-#[capi_safe_unwind(0)]
 pub unsafe extern "C" fn vm_exec_instance_get_breakpoint_value(
     instance_ptr: *const vm_exec_instance_t,
 ) -> u64 {
