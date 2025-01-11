@@ -1,25 +1,25 @@
 [package]
 name = "dharitri-vm-executor-wasmer"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 publish = false # will also be published, but it is not yet ready for that
 
 [lib]
 
 [dependencies.dharitri-vm-executor]
-version = "0.2.0"
+version = "0.3.0"
 path = "../vm-executor"
 
 [dependencies]
-wasmer = { git = "https://github.com/TerraDharitri/wasmer", rev = "cdd1550", default-features = false, features = [
+wasmer = { git = "https://github.com/TerraDharitri/wasmer", rev = "3d69a1334f499737f96b3488fac748afeaa41b84", default-features = false, features = [
     "singlepass",
     "sys",
     "universal",
     "wat",
 ] }
 
-wasmer-vm = { git = "https://github.com/TerraDharitri/wasmer", rev = "cdd1550" }
-wasmer-types = { git = "https://github.com/TerraDharitri/wasmer", rev = "cdd1550" }
+wasmer-vm = { git = "https://github.com/TerraDharitri/wasmer", rev = "3d69a1334f499737f96b3488fac748afeaa41b84" }
+wasmer-types = { git = "https://github.com/TerraDharitri/wasmer", rev = "3d69a1334f499737f96b3488fac748afeaa41b84" }
 
 chrono = "0.4.23"
 log = "0.4.17"
