@@ -1,13 +1,14 @@
+cargo-features = ["edition2024"]
 [package]
 name = "dharitri-vm-executor-wasmer"
-version = "0.3.0"
-edition = "2021"
+version = "0.0.2"
+edition = "2024"
 publish = false # will also be published, but it is not yet ready for that
 
 [lib]
 
 [dependencies.dharitri-vm-executor]
-version = "0.3.0"
+version = "0.0.2"
 path = "../vm-executor"
 
 [dependencies]
