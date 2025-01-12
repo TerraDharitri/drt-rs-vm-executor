@@ -1,8 +1,7 @@
-cargo-features = ["edition2024"]
 [package]
 name = "dharitri-vm-executor"
-version = "0.0.1"
-edition = "2024"
+version = "0.0.3"
+edition = "2021"
 
 authors = [
         "Dharitri <contact@dharitri.org>",
