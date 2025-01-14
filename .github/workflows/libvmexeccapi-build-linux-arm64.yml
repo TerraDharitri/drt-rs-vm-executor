@@ -30,10 +30,10 @@ jobs:
           load: true
           platforms: linux/arm64
           file: ./Docker/arm64.dockerfile
-          tags: mx-builder
+          tags: drt-builder
 
       - name: Copy library from Docker image
-        run: docker run --platform="linux/arm64" --rm mx-builder cat /data/libvmexeccapi_arm.so > $GITHUB_WORKSPACE/libvmexeccapi_arm.so
+        run: docker run --platform="linux/arm64" --rm drt-builder cat /data/libvmexeccapi_arm.so > $GITHUB_WORKSPACE/libvmexeccapi_arm.so
 
       - name: Save artifacts
         uses: actions/upload-artifact@v4
