@@ -1,8 +1,6 @@
-[workspace]
-resolver = "2"
 
+[workspace]
 members = [
-    "meta",
     "c-api",
     "vm-executor",
     "vm-executor-wasmer",

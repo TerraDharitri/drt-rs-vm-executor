@@ -3,9 +3,9 @@ use dharitri_vm_executor::{
     Executor, ExecutorError, ExecutorLastError, ExecutorService, VMHooks,
 };
 
-use crate::wasmer_logger as WasmerLogger;
+// use log::LevelFilter;
+// use crate::wasmer_logger as WasmerLogger;
 use crate::WasmerExecutor;
-use log::LevelFilter;
 
 #[derive(Default)]
 pub struct BasicExecutorService {
@@ -22,7 +22,7 @@ impl BasicExecutorService {
 
     fn init() {
         // Initialize the logger only once (disable until we sync with node)
-        WasmerLogger::init(LevelFilter::Off);
+        // WasmerLogger::init(LevelFilter::Off);
     }
 }
 

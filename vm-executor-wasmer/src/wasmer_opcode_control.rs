@@ -26,8 +26,6 @@ struct OpcodeControlGlobalIndexes {
 
 #[derive(Debug)]
 pub(crate) struct OpcodeControl {
-    total_memory_grow_count: Arc<Mutex<usize>>,
-    max_memory_grow_count: usize,
     max_memory_grow: usize,
     max_memory_grow_delta: usize,
     breakpoints_middleware: Arc<Breakpoints>,
@@ -36,14 +34,11 @@ pub(crate) struct OpcodeControl {
 
 impl OpcodeControl {
     pub(crate) fn new(
-        max_memory_grow_count: usize,
         max_memory_grow: usize,
         max_memory_grow_delta: usize,
         breakpoints_middleware: Arc<Breakpoints>,
     ) -> Self {
         Self {
-            total_memory_grow_count: Arc::new(Mutex::new(0)),
-            max_memory_grow_count,
             max_memory_grow,
             max_memory_grow_delta,
             breakpoints_middleware,
@@ -86,8 +81,6 @@ impl ModuleMiddleware for OpcodeControl {
         _local_function_index: LocalFunctionIndex,
     ) -> Box<dyn FunctionMiddleware> {
         Box::new(FunctionOpcodeControl {
-            total_memory_grow_count: self.total_memory_grow_count.clone(),
-            max_memory_grow_count: self.max_memory_grow_count,
             max_memory_grow: self.max_memory_grow,
             max_memory_grow_delta: self.max_memory_grow_delta,
             breakpoints_middleware: self.breakpoints_middleware.clone(),
@@ -124,8 +117,6 @@ impl MiddlewareWithProtectedGlobals for OpcodeControl {
 
 #[derive(Debug)]
 struct FunctionOpcodeControl {
-    total_memory_grow_count: Arc<Mutex<usize>>,
-    max_memory_grow_count: usize,
     max_memory_grow: usize,
     max_memory_grow_delta: usize,
     breakpoints_middleware: Arc<Breakpoints>,
@@ -202,12 +193,6 @@ impl FunctionMiddleware for FunctionOpcodeControl {
         state: &mut MiddlewareReaderState<'b>,
     ) -> Result<(), MiddlewareError> {
         if matches!(operator, Operator::MemoryGrow { .. }) {
-            let mut grow_count = self.total_memory_grow_count.lock().map_err(|_| MiddlewareError::new("MemoryGrowLimit", "failed to lock counter"))?;
-            *grow_count += 1;
-            if *grow_count > self.max_memory_grow_count {
-                return Err(MiddlewareError::new("MemoryGrowLimit", "memory.grow limit exceeded"));
-            }
-
             self.inject_memory_grow_check(state);
         }
 

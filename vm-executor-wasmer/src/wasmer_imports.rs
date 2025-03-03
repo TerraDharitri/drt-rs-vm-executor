@@ -276,11 +276,6 @@ fn wasmer_import_get_call_value_token_name_by_index(env: &VMHooksWrapper, call_v
 }
 
 #[rustfmt::skip]
-fn wasmer_import_is_reserved_function_name(env: &VMHooksWrapper, name_handle: i32) -> i32 {
-    env.vm_hooks.is_reserved_function_name(name_handle)
-}
-
-#[rustfmt::skip]
 fn wasmer_import_write_log(env: &VMHooksWrapper, data_pointer: i32, data_length: i32, topic_ptr: i32, num_topics: i32) {
     env.vm_hooks.write_log(env.convert_mem_ptr(data_pointer), env.convert_mem_length(data_length), env.convert_mem_ptr(topic_ptr), num_topics)
 }
@@ -431,16 +426,6 @@ fn wasmer_import_managed_caller(env: &VMHooksWrapper, destination_handle: i32) {
 }
 
 #[rustfmt::skip]
-fn wasmer_import_managed_get_original_caller_addr(env: &VMHooksWrapper, destination_handle: i32) {
-    env.vm_hooks.managed_get_original_caller_addr(destination_handle)
-}
-
-#[rustfmt::skip]
-fn wasmer_import_managed_get_relayer_addr(env: &VMHooksWrapper, destination_handle: i32) {
-    env.vm_hooks.managed_get_relayer_addr(destination_handle)
-}
-
-#[rustfmt::skip]
 fn wasmer_import_managed_signal_error(env: &VMHooksWrapper, err_handle: i32) {
     env.vm_hooks.managed_signal_error(err_handle)
 }
@@ -478,11 +463,6 @@ fn wasmer_import_managed_get_return_data(env: &VMHooksWrapper, result_id: i32, r
 #[rustfmt::skip]
 fn wasmer_import_managed_get_multi_dcdt_call_value(env: &VMHooksWrapper, multi_call_value_handle: i32) {
     env.vm_hooks.managed_get_multi_dcdt_call_value(multi_call_value_handle)
-}
-
-#[rustfmt::skip]
-fn wasmer_import_managed_get_back_transfers(env: &VMHooksWrapper, dcdt_transfers_value_handle: i32, rewa_value_handle: i32) {
-    env.vm_hooks.managed_get_back_transfers(dcdt_transfers_value_handle, rewa_value_handle)
 }
 
 #[rustfmt::skip]
@@ -553,11 +533,6 @@ fn wasmer_import_managed_execute_on_dest_context(env: &VMHooksWrapper, gas: i64,
 #[rustfmt::skip]
 fn wasmer_import_managed_multi_transfer_dcdt_nft_execute(env: &VMHooksWrapper, dst_handle: i32, token_transfers_handle: i32, gas_limit: i64, function_handle: i32, arguments_handle: i32) -> i32 {
     env.vm_hooks.managed_multi_transfer_dcdt_nft_execute(dst_handle, token_transfers_handle, gas_limit, function_handle, arguments_handle)
-}
-
-#[rustfmt::skip]
-fn wasmer_import_managed_multi_transfer_dcdt_nft_execute_by_user(env: &VMHooksWrapper, user_handle: i32, dst_handle: i32, token_transfers_handle: i32, gas_limit: i64, function_handle: i32, arguments_handle: i32) -> i32 {
-    env.vm_hooks.managed_multi_transfer_dcdt_nft_execute_by_user(user_handle, dst_handle, token_transfers_handle, gas_limit, function_handle, arguments_handle)
 }
 
 #[rustfmt::skip]
@@ -1305,21 +1280,6 @@ fn wasmer_import_elliptic_curve_get_values(env: &VMHooksWrapper, ec_handle: i32,
     env.vm_hooks.elliptic_curve_get_values(ec_handle, field_order_handle, base_point_order_handle, eq_constant_handle, x_base_point_handle, y_base_point_handle)
 }
 
-#[rustfmt::skip]
-fn wasmer_import_managed_verify_secp256r1(env: &VMHooksWrapper, key_handle: i32, message_handle: i32, sig_handle: i32) -> i32 {
-    env.vm_hooks.managed_verify_secp256r1(key_handle, message_handle, sig_handle)
-}
-
-#[rustfmt::skip]
-fn wasmer_import_managed_verify_blssignature_share(env: &VMHooksWrapper, key_handle: i32, message_handle: i32, sig_handle: i32) -> i32 {
-    env.vm_hooks.managed_verify_blssignature_share(key_handle, message_handle, sig_handle)
-}
-
-#[rustfmt::skip]
-fn wasmer_import_managed_verify_blsaggregated_signature(env: &VMHooksWrapper, key_handle: i32, message_handle: i32, sig_handle: i32) -> i32 {
-    env.vm_hooks.managed_verify_blsaggregated_signature(key_handle, message_handle, sig_handle)
-}
-
 pub fn generate_import_object(store: &Store, env: &VMHooksWrapper) -> ImportObject {
     imports! {
         "env" => {
@@ -1376,7 +1336,6 @@ pub fn generate_import_object(store: &Store, env: &VMHooksWrapper) -> ImportObje
             "getNumDCDTTransfers" => Function::new_native_with_env(store, env.clone(), wasmer_import_get_num_dcdt_transfers),
             "getCallValueTokenName" => Function::new_native_with_env(store, env.clone(), wasmer_import_get_call_value_token_name),
             "getCallValueTokenNameByIndex" => Function::new_native_with_env(store, env.clone(), wasmer_import_get_call_value_token_name_by_index),
-            "isReservedFunctionName" => Function::new_native_with_env(store, env.clone(), wasmer_import_is_reserved_function_name),
             "writeLog" => Function::new_native_with_env(store, env.clone(), wasmer_import_write_log),
             "writeEventLog" => Function::new_native_with_env(store, env.clone(), wasmer_import_write_event_log),
             "getBlockTimestamp" => Function::new_native_with_env(store, env.clone(), wasmer_import_get_block_timestamp),
@@ -1407,8 +1366,6 @@ pub fn generate_import_object(store: &Store, env: &VMHooksWrapper) -> ImportObje
             "managedSCAddress" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_sc_address),
             "managedOwnerAddress" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_owner_address),
             "managedCaller" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_caller),
-            "managedGetOriginalCallerAddr" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_original_caller_addr),
-            "managedGetRelayerAddr" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_relayer_addr),
             "managedSignalError" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_signal_error),
             "managedWriteLog" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_write_log),
             "managedGetOriginalTxHash" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_original_tx_hash),
@@ -1417,7 +1374,6 @@ pub fn generate_import_object(store: &Store, env: &VMHooksWrapper) -> ImportObje
             "managedGetPrevBlockRandomSeed" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_prev_block_random_seed),
             "managedGetReturnData" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_return_data),
             "managedGetMultiDCDTCallValue" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_multi_dcdt_call_value),
-            "managedGetBackTransfers" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_back_transfers),
             "managedGetDCDTBalance" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_dcdt_balance),
             "managedGetDCDTTokenData" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_dcdt_token_data),
             "managedAsyncCall" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_async_call),
@@ -1432,7 +1388,6 @@ pub fn generate_import_object(store: &Store, env: &VMHooksWrapper) -> ImportObje
             "managedExecuteOnSameContext" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_execute_on_same_context),
             "managedExecuteOnDestContext" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_execute_on_dest_context),
             "managedMultiTransferDCDTNFTExecute" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_multi_transfer_dcdt_nft_execute),
-            "managedMultiTransferDCDTNFTExecuteByUser" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_multi_transfer_dcdt_nft_execute_by_user),
             "managedTransferValueExecute" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_transfer_value_execute),
             "managedIsDCDTFrozen" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_is_dcdt_frozen),
             "managedIsDCDTLimitedTransfer" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_is_dcdt_limited_transfer),
@@ -1582,9 +1537,6 @@ pub fn generate_import_object(store: &Store, env: &VMHooksWrapper) -> ImportObje
             "getCurveLengthEC" => Function::new_native_with_env(store, env.clone(), wasmer_import_get_curve_length_ec),
             "getPrivKeyByteLengthEC" => Function::new_native_with_env(store, env.clone(), wasmer_import_get_priv_key_byte_length_ec),
             "ellipticCurveGetValues" => Function::new_native_with_env(store, env.clone(), wasmer_import_elliptic_curve_get_values),
-            "managedVerifySecp256r1" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_verify_secp256r1),
-            "managedVerifyBLSSignatureShare" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_verify_blssignature_share),
-            "managedVerifyBLSAggregatedSignature" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_verify_blsaggregated_signature),
 
         }
     }

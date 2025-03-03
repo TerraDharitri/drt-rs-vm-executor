@@ -66,7 +66,6 @@ pub trait VMHooks: core::fmt::Debug + 'static {
     fn get_num_dcdt_transfers(&self) -> i32;
     fn get_call_value_token_name(&self, call_value_offset: MemPtr, token_name_offset: MemPtr) -> i32;
     fn get_call_value_token_name_by_index(&self, call_value_offset: MemPtr, token_name_offset: MemPtr, index: i32) -> i32;
-    fn is_reserved_function_name(&self, name_handle: i32) -> i32;
     fn write_log(&self, data_pointer: MemPtr, data_length: MemLength, topic_ptr: MemPtr, num_topics: i32);
     fn write_event_log(&self, num_topics: i32, topic_lengths_offset: MemPtr, topic_offset: MemPtr, data_offset: MemPtr, data_length: MemLength);
     fn get_block_timestamp(&self) -> i64;
@@ -97,8 +96,6 @@ pub trait VMHooks: core::fmt::Debug + 'static {
     fn managed_sc_address(&self, destination_handle: i32);
     fn managed_owner_address(&self, destination_handle: i32);
     fn managed_caller(&self, destination_handle: i32);
-    fn managed_get_original_caller_addr(&self, destination_handle: i32);
-    fn managed_get_relayer_addr(&self, destination_handle: i32);
     fn managed_signal_error(&self, err_handle: i32);
     fn managed_write_log(&self, topics_handle: i32, data_handle: i32);
     fn managed_get_original_tx_hash(&self, result_handle: i32);
@@ -107,7 +104,6 @@ pub trait VMHooks: core::fmt::Debug + 'static {
     fn managed_get_prev_block_random_seed(&self, result_handle: i32);
     fn managed_get_return_data(&self, result_id: i32, result_handle: i32);
     fn managed_get_multi_dcdt_call_value(&self, multi_call_value_handle: i32);
-    fn managed_get_back_transfers(&self, dcdt_transfers_value_handle: i32, rewa_value_handle: i32);
     fn managed_get_dcdt_balance(&self, address_handle: i32, token_id_handle: i32, nonce: i64, value_handle: i32);
     fn managed_get_dcdt_token_data(&self, address_handle: i32, token_id_handle: i32, nonce: i64, value_handle: i32, properties_handle: i32, hash_handle: i32, name_handle: i32, attributes_handle: i32, creator_handle: i32, royalties_handle: i32, uris_handle: i32);
     fn managed_async_call(&self, dest_handle: i32, value_handle: i32, function_handle: i32, arguments_handle: i32);
@@ -122,7 +118,6 @@ pub trait VMHooks: core::fmt::Debug + 'static {
     fn managed_execute_on_same_context(&self, gas: i64, address_handle: i32, value_handle: i32, function_handle: i32, arguments_handle: i32, result_handle: i32) -> i32;
     fn managed_execute_on_dest_context(&self, gas: i64, address_handle: i32, value_handle: i32, function_handle: i32, arguments_handle: i32, result_handle: i32) -> i32;
     fn managed_multi_transfer_dcdt_nft_execute(&self, dst_handle: i32, token_transfers_handle: i32, gas_limit: i64, function_handle: i32, arguments_handle: i32) -> i32;
-    fn managed_multi_transfer_dcdt_nft_execute_by_user(&self, user_handle: i32, dst_handle: i32, token_transfers_handle: i32, gas_limit: i64, function_handle: i32, arguments_handle: i32) -> i32;
     fn managed_transfer_value_execute(&self, dst_handle: i32, value_handle: i32, gas_limit: i64, function_handle: i32, arguments_handle: i32) -> i32;
     fn managed_is_dcdt_frozen(&self, address_handle: i32, token_id_handle: i32, nonce: i64) -> i32;
     fn managed_is_dcdt_limited_transfer(&self, token_id_handle: i32) -> i32;
@@ -272,9 +267,6 @@ pub trait VMHooks: core::fmt::Debug + 'static {
     fn get_curve_length_ec(&self, ec_handle: i32) -> i32;
     fn get_priv_key_byte_length_ec(&self, ec_handle: i32) -> i32;
     fn elliptic_curve_get_values(&self, ec_handle: i32, field_order_handle: i32, base_point_order_handle: i32, eq_constant_handle: i32, x_base_point_handle: i32, y_base_point_handle: i32) -> i32;
-    fn managed_verify_secp256r1(&self, key_handle: i32, message_handle: i32, sig_handle: i32) -> i32;
-    fn managed_verify_blssignature_share(&self, key_handle: i32, message_handle: i32, sig_handle: i32) -> i32;
-    fn managed_verify_blsaggregated_signature(&self, key_handle: i32, message_handle: i32, sig_handle: i32) -> i32;
 }
 
 /// Dummy implementation for VMHooks. Can be used as placeholder, or in tests.
@@ -542,11 +534,6 @@ impl VMHooks for VMHooksDefault {
         0
     }
 
-    fn is_reserved_function_name(&self, name_handle: i32) -> i32 {
-        println!("Called: is_reserved_function_name");
-        0
-    }
-
     fn write_log(&self, data_pointer: MemPtr, data_length: MemLength, topic_ptr: MemPtr, num_topics: i32) {
         println!("Called: write_log");
     }
@@ -683,14 +670,6 @@ impl VMHooks for VMHooksDefault {
         println!("Called: managed_caller");
     }
 
-    fn managed_get_original_caller_addr(&self, destination_handle: i32) {
-        println!("Called: managed_get_original_caller_addr");
-    }
-
-    fn managed_get_relayer_addr(&self, destination_handle: i32) {
-        println!("Called: managed_get_relayer_addr");
-    }
-
     fn managed_signal_error(&self, err_handle: i32) {
         println!("Called: managed_signal_error");
     }
@@ -721,10 +700,6 @@ impl VMHooks for VMHooksDefault {
 
     fn managed_get_multi_dcdt_call_value(&self, multi_call_value_handle: i32) {
         println!("Called: managed_get_multi_dcdt_call_value");
-    }
-
-    fn managed_get_back_transfers(&self, dcdt_transfers_value_handle: i32, rewa_value_handle: i32) {
-        println!("Called: managed_get_back_transfers");
     }
 
     fn managed_get_dcdt_balance(&self, address_handle: i32, token_id_handle: i32, nonce: i64, value_handle: i32) {
@@ -787,11 +762,6 @@ impl VMHooks for VMHooksDefault {
 
     fn managed_multi_transfer_dcdt_nft_execute(&self, dst_handle: i32, token_transfers_handle: i32, gas_limit: i64, function_handle: i32, arguments_handle: i32) -> i32 {
         println!("Called: managed_multi_transfer_dcdt_nft_execute");
-        0
-    }
-
-    fn managed_multi_transfer_dcdt_nft_execute_by_user(&self, user_handle: i32, dst_handle: i32, token_transfers_handle: i32, gas_limit: i64, function_handle: i32, arguments_handle: i32) -> i32 {
-        println!("Called: managed_multi_transfer_dcdt_nft_execute_by_user");
         0
     }
 
@@ -1483,21 +1453,6 @@ impl VMHooks for VMHooksDefault {
 
     fn elliptic_curve_get_values(&self, ec_handle: i32, field_order_handle: i32, base_point_order_handle: i32, eq_constant_handle: i32, x_base_point_handle: i32, y_base_point_handle: i32) -> i32 {
         println!("Called: elliptic_curve_get_values");
-        0
-    }
-
-    fn managed_verify_secp256r1(&self, key_handle: i32, message_handle: i32, sig_handle: i32) -> i32 {
-        println!("Called: managed_verify_secp256r1");
-        0
-    }
-
-    fn managed_verify_blssignature_share(&self, key_handle: i32, message_handle: i32, sig_handle: i32) -> i32 {
-        println!("Called: managed_verify_blssignature_share");
-        0
-    }
-
-    fn managed_verify_blsaggregated_signature(&self, key_handle: i32, message_handle: i32, sig_handle: i32) -> i32 {
-        println!("Called: managed_verify_blsaggregated_signature");
         0
     }
 }

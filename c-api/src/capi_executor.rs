@@ -5,11 +5,9 @@ use crate::{
     service_singleton::with_service, vm_exec_result_t,
 };
 use libc::c_void;
-use meta::capi_safe_unwind;
 use dharitri_vm_executor::Executor;
 use dharitri_vm_executor_wasmer::force_sighandler_reinstall;
 
-#[allow(non_camel_case_types)]
 #[repr(C)]
 pub struct vm_exec_executor_t;
 
@@ -24,7 +22,6 @@ pub struct CapiExecutor {
 /// C API function, works with raw object pointers.
 #[allow(clippy::cast_ptr_alignment)]
 #[no_mangle]
-#[capi_safe_unwind(vm_exec_result_t::VM_EXEC_ERROR)]
 pub unsafe extern "C" fn vm_exec_new_executor(
     executor: *mut *mut vm_exec_executor_t,
     vm_hook_pointers_ptr_ptr: *mut *mut vm_exec_vm_hook_c_func_pointers,
@@ -77,27 +74,19 @@ pub unsafe extern "C" fn vm_force_sighandler_reinstall() {
 /// C API function, works with raw object pointers.
 #[allow(clippy::cast_ptr_alignment)]
 #[no_mangle]
-#[capi_safe_unwind(vm_exec_result_t::VM_EXEC_ERROR)]
 pub unsafe extern "C" fn vm_exec_executor_set_vm_hooks_ptr(
     executor_ptr: *mut vm_exec_executor_t,
     vm_hooks_ptr: *mut c_void,
 ) -> vm_exec_result_t {
-    let result = std::panic::catch_unwind(|| {
-        let capi_executor = cast_input_ptr!(executor_ptr, CapiExecutor, "executor ptr is null");
+    let capi_executor = cast_input_ptr!(executor_ptr, CapiExecutor, "executor ptr is null");
 
-        let result = capi_executor.content.set_vm_hooks_ptr(vm_hooks_ptr);
-        match result {
-            Ok(()) => vm_exec_result_t::VM_EXEC_OK,
-            Err(message) => {
-                with_service(|service| service.update_last_error_str(message.to_string()));
-                vm_exec_result_t::VM_EXEC_ERROR
-            }
-        }
-    });
-
+    let result = capi_executor.content.set_vm_hooks_ptr(vm_hooks_ptr);
     match result {
-        Ok(result) => result,
-        Err(_) => vm_exec_result_t::VM_EXEC_ERROR,
+        Ok(()) => vm_exec_result_t::VM_EXEC_OK,
+        Err(message) => {
+            with_service(|service| service.update_last_error_str(message.to_string()));
+            vm_exec_result_t::VM_EXEC_ERROR
+        }
     }
 }
 
@@ -108,9 +97,8 @@ pub unsafe extern "C" fn vm_exec_executor_set_vm_hooks_ptr(
 /// C API function, works with raw object pointers.
 #[allow(clippy::cast_ptr_alignment)]
 #[no_mangle]
-pub unsafe extern "C" fn vm_exec_executor_destroy(executor_ptr: *mut vm_exec_executor_t) {
-    if !executor_ptr.is_null() {
-        let executor = Box::from_raw(executor_ptr as *mut CapiExecutor);
-        drop(executor)
+pub unsafe extern "C" fn vm_exec_executor_destroy(executor: *mut vm_exec_executor_t) {
+    if !executor.is_null() {
+        std::ptr::drop_in_place(executor);
     }
 }

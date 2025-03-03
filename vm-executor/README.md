@@ -1,6 +1,6 @@
 # dharitri-vm-executor
 
-The Dharitri VM is composed of two parts:
+The DharitrI VM is composed of two parts:
 - A high-level VM, that connects to the protocol and manages the environment of the smart contract execution
 - A low-level component, called "executor", whose sole purpose is running WebAssembly code, as given. The only current implementation of this component is a wrapper around Wasmer 2.2.
 

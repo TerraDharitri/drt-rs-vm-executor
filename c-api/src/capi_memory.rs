@@ -1,7 +1,5 @@
 //! Instantiate a module, call functions, and read exports.
 
-use meta::capi_safe_unwind;
-
 use crate::{
     capi_instance::{vm_exec_instance_t, CapiInstance},
     service_singleton::with_service,
@@ -18,7 +16,6 @@ use std::ptr;
 /// C API function, works with raw object pointers.
 #[allow(clippy::cast_ptr_alignment)]
 #[no_mangle]
-#[capi_safe_unwind(0)]
 pub unsafe extern "C" fn vm_exec_instance_memory_data_length(
     instance_ptr: *mut vm_exec_instance_t,
 ) -> u64 {
@@ -46,7 +43,6 @@ pub unsafe extern "C" fn vm_exec_instance_memory_data_length(
 /// C API function, works with raw object pointers.
 #[allow(clippy::cast_ptr_alignment)]
 #[no_mangle]
-#[capi_safe_unwind(ptr::null_mut())]
 pub unsafe extern "C" fn vm_exec_instance_memory_data(
     instance_ptr: *mut vm_exec_instance_t,
 ) -> *mut u8 {
@@ -78,7 +74,6 @@ pub unsafe extern "C" fn vm_exec_instance_memory_data(
 /// C API function, works with raw object pointers.
 #[allow(clippy::cast_ptr_alignment)]
 #[no_mangle]
-#[capi_safe_unwind(vm_exec_result_t::VM_EXEC_ERROR)]
 pub unsafe extern "C" fn vm_exec_instance_memory_grow(
     instance_ptr: *mut vm_exec_instance_t,
     by_num_pages: u32,

@@ -8,7 +8,6 @@ publish = false
 crate-type = ["cdylib"]
 
 [dependencies]
-meta = { path = "../meta" }
 dharitri-vm-executor = { path = "../vm-executor" }
 dharitri-vm-executor-wasmer = { path = "../vm-executor-wasmer" }
 
