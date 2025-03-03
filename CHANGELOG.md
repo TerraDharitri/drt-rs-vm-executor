@@ -2,6 +2,10 @@
 
 This file contains a centralizes a trace of all published crate versions, with their changes in short.
 
+## [dharitri-vm-executor 1.0.2] - 2023-10-12
+- New VM hook: `managedGetBackTransfers`.
+- Memory fix.
+
 ## [dharitri-vm-executor 1.0.1] - 2023-06-15
 This is the initial official release of the VM executor interface. The purpose is for it to be used in the new smart contract debugger architecture.
 

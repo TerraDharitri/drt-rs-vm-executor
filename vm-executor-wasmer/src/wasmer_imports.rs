@@ -466,6 +466,11 @@ fn wasmer_import_managed_get_multi_dcdt_call_value(env: &VMHooksWrapper, multi_c
 }
 
 #[rustfmt::skip]
+fn wasmer_import_managed_get_back_transfers(env: &VMHooksWrapper, dcdt_transfers_value_handle: i32, call_value_handle: i32) {
+    env.vm_hooks.managed_get_back_transfers(dcdt_transfers_value_handle, call_value_handle)
+}
+
+#[rustfmt::skip]
 fn wasmer_import_managed_get_dcdt_balance(env: &VMHooksWrapper, address_handle: i32, token_id_handle: i32, nonce: i64, value_handle: i32) {
     env.vm_hooks.managed_get_dcdt_balance(address_handle, token_id_handle, nonce, value_handle)
 }
@@ -1374,6 +1379,7 @@ pub fn generate_import_object(store: &Store, env: &VMHooksWrapper) -> ImportObje
             "managedGetPrevBlockRandomSeed" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_prev_block_random_seed),
             "managedGetReturnData" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_return_data),
             "managedGetMultiDCDTCallValue" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_multi_dcdt_call_value),
+            "managedGetBackTransfers" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_back_transfers),
             "managedGetDCDTBalance" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_dcdt_balance),
             "managedGetDCDTTokenData" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_get_dcdt_token_data),
             "managedAsyncCall" => Function::new_native_with_env(store, env.clone(), wasmer_import_managed_async_call),
