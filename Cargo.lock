@@ -294,7 +294,7 @@ dependencies = [
 
 [[package]]
 name = "dharitri-vm-executor"
-version = "1.0.3"
+version = "1.0.4"
 
 [[package]]
 name = "dharitri-vm-executor-c-api"
@@ -312,7 +312,7 @@ dependencies = [
 
 [[package]]
 name = "dharitri-vm-executor-wasmer"
-version = "1.0.3"
+version = "1.0.4"
 dependencies = [
  "chrono",
  "dharitri-vm-executor",
