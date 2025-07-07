@@ -11,19 +11,19 @@ jobs:
     name: Rust tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - uses: actions-rs/toolchain@v1
         with:
           default: true
-          toolchain: "1.77"
+          toolchain: "1.83"
       - name: Run rust tests
-        run: cargo +1.77 test
+        run: cargo +1.83 test --release
   clippy_check:
     permissions: write-all
     name: Clippy linter check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
@@ -32,4 +32,3 @@ jobs:
       - uses: actions-rs/clippy-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --all-features

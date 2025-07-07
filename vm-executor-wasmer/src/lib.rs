@@ -1,3 +1,4 @@
+pub mod new_traits;
 mod wasmer_breakpoints;
 mod wasmer_executor;
 mod wasmer_helpers;
@@ -17,3 +18,9 @@ pub use wasmer_instance::*;
 pub use wasmer_logger::*;
 pub use wasmer_metering_helpers::*;
 pub use wasmer_service::*;
+
+#[cfg(feature = "dharitri-vm-executor")]
+pub use dharitri_vm_executor as executor_interface;
+
+#[cfg(feature = "dharitri-vm-executor-published")]
+pub use dharitri_vm_executor_published as executor_interface;
