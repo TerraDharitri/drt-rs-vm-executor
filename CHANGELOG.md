@@ -2,7 +2,7 @@
 
 This file contains a centralizes a trace of all published crate versions, with their changes in short.
 
-## [dharitri-vm-executor 1.0.4] - 2025-05-23
+## [dharitri-vm-executor 1.0.5] - 2025-05-23
 - Rust VM support:
     - New set of traits to work with the Rust VM;
     - Renamed old traits as `*Legacy`.

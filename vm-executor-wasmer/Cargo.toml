@@ -1,6 +1,6 @@
 [package]
 name = "dharitri-vm-executor-wasmer"
-version = "1.0.4"
+version = "1.0.5"
 edition = "2021"
 publish = false # cannot publish while still working with unpublished wasmer fork
 
@@ -20,7 +20,7 @@ categories = ["cryptography::cryptocurrencies"]
 default = ["dharitri-vm-executor"]
 
 [dependencies.dharitri-vm-executor]
-version = "1.0.4"
+version = "1.0.5"
 path = "../vm-executor"
 optional = true
 
@@ -28,7 +28,7 @@ optional = true
 ## to help with usage as a git-based dependency/
 [dependencies.dharitri-vm-executor-published]
 package = "dharitri-vm-executor"
-version = "1.0.4"
+version = "1.0.5"
 optional = true
 
 [dependencies]
