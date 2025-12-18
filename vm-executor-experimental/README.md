@@ -1,6 +1,6 @@
 # dharitri-vm-executor-experimental
 
-Experimental Wasmer adapter for the Dharitri VM, not used in production.
+Experimental Wasmer adapter for the DharitrI VM, not used in production.
 
 This adapter is currently only usable from the Rust VM, via a new set of traits.
 
