@@ -2,7 +2,7 @@
 
 This file contains a centralizes a trace of all published crate versions, with their changes in short.
 
-## [dharitri-vm-executor 1.0.4] - 2025-07-03
+## [dharitri-vm-executor 0.5.0] - 2025-07-03
 - Barnard VM hooks.
 
 ## [dharitri-vm-executor 0.4.0] - 2025-05-23

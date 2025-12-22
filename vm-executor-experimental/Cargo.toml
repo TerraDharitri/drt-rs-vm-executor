@@ -1,14 +1,14 @@
 [package]
 name = "dharitri-vm-executor-wasmer-experimental"
-version = "1.0.7"
+version = "1.0.8"
 edition = "2021"
 
 authors = ["Dharitri <contact@dharitri.org>"]
 license = "GPL-3.0-only"
 readme = "README.md"
-repository = "https://github.com/TerraDharitri/drt-rs-vm-executor"
-homepage = "https://dharitri.org/"
-documentation = "https://docs.dharitri.org/"
+repository = "https://github.com/TerraDharitri/drt-vm-executor-rs"
+homepage = "https://www.dharitri.org/"
+documentation = "https://docs.www.dharitri.org/"
 description = "Dharitri VM Wasmer adapter (experimental)"
 keywords = ["dharitri", "blockchain", "VM"]
 categories = ["cryptography::cryptocurrencies"]
@@ -16,7 +16,7 @@ categories = ["cryptography::cryptocurrencies"]
 [lib]
 
 [dependencies.dharitri-vm-executor]
-version = "1.0.7"
+version = "1.0.8"
 path = "../vm-executor"
 
 [dependencies]
