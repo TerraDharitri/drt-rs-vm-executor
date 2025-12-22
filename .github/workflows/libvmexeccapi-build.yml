@@ -1,9 +1,9 @@
-name: libvmexeccapi-build
+name: libvmoaeccapi-build
 
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 
 env:
@@ -17,13 +17,13 @@ jobs:
       matrix:
         include:
           - os: ubuntu-22.04
-            artifact_name: libvmexeccapi.so
+            artifact_name: libvmoaeccapi.so
             make_target: capi-linux-amd64
           - os: macos-13
-            artifact_name: libvmexeccapi.dylib
+            artifact_name: libvmoaeccapi.dylib
             make_target: capi-osx-amd64
           - os: macos-13-xlarge
-            artifact_name: libvmexeccapi_arm
+            artifact_name: libvmoaeccapi_arm
             make_target: capi-osx-arm
     steps:
       - name: Install rust
@@ -44,4 +44,4 @@ jobs:
           path: |
             target/release/*.so
             target/release/*.dylib
-            c-api/libvmexeccapi.h
+            c-api/libvmoaeccapi.h

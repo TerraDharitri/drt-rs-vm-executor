@@ -479,20 +479,20 @@ dependencies = [
 
 [[package]]
 name = "dharitri-vm-executor"
-version = "1.0.5"
+version = "1.0.6"
 dependencies = [
  "serde",
- "toml 0.7.8",
+ "toml 0.8.23",
 ]
 
 [[package]]
 name = "dharitri-vm-executor"
-version = "1.0.5"
+version = "1.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aa8330e1aed859889bd4921ee6a2d566934aa450481a7ad5ca821374d06f5478"
+checksum = "54226acfb3de16e3296569eae2bf811c9a8bfdccac1d4b7a7bededd0dfa001f6"
 dependencies = [
  "serde",
- "toml 0.7.8",
+ "toml 0.8.23",
 ]
 
 [[package]]
@@ -500,7 +500,7 @@ name = "dharitri-vm-executor-c-api"
 version = "0.0.0"
 dependencies = [
  "cbindgen",
- "dharitri-vm-executor 1.0.5",
+ "dharitri-vm-executor 1.0.6",
  "dharitri-vm-executor-wasmer",
  "env_logger",
  "lazy_static",
@@ -511,11 +511,11 @@ dependencies = [
 
 [[package]]
 name = "dharitri-vm-executor-wasmer"
-version = "1.0.5"
+version = "1.0.4"
 dependencies = [
  "chrono",
- "dharitri-vm-executor 1.0.5",
- "dharitri-vm-executor 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)",
+ "dharitri-vm-executor 1.0.6",
+ "dharitri-vm-executor 1.0.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "log",
  "loupe",
  "thiserror 2.0.17",
@@ -526,10 +526,10 @@ dependencies = [
 
 [[package]]
 name = "dharitri-vm-executor-wasmer-experimental"
-version = "1.0.5"
+version = "1.0.6"
 dependencies = [
  "chrono",
- "dharitri-vm-executor 1.0.5",
+ "dharitri-vm-executor 1.0.6",
  "log",
  "loupe",
  "rc-new-cyclic-fallible",
@@ -674,7 +674,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
 dependencies = [
  "libc",
- "windows-sys 0.52.0",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -843,11 +843,11 @@ checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
 name = "home"
-version = "0.5.11"
+version = "0.5.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "589533453244b0995c858700322199b2becb13b627df2851f64a2775d024abcf"
+checksum = "cc627f471c528ff0c4a49e1d5e60450c8f6461dd6d10ba9dcd3a61d3dff7728d"
 dependencies = [
- "windows-sys 0.59.0",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -1588,7 +1588,7 @@ dependencies = [
  "errno",
  "libc",
  "linux-raw-sys 0.11.0",
- "windows-sys 0.52.0",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -1829,7 +1829,7 @@ dependencies = [
  "getrandom 0.3.4",
  "once_cell",
  "rustix 1.1.2",
- "windows-sys 0.52.0",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -1916,9 +1916,9 @@ dependencies = [
 
 [[package]]
 name = "toml"
-version = "0.7.8"
+version = "0.8.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dd79e69d3b627db300ff956027cc6c3798cef26d22526befdfcd12feeb6d2257"
+checksum = "dc1beb996b9d83529a9e75c17a1686767d148d70663143c7854d8b4a09ced362"
 dependencies = [
  "serde",
  "serde_spanned",
@@ -1937,16 +1937,23 @@ dependencies = [
 
 [[package]]
 name = "toml_edit"
-version = "0.19.15"
+version = "0.22.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1b5bb770da30e5cbfde35a2d7b9b8a2c4b8ef89548a7a6aeab5c9a576e3e7421"
+checksum = "41fe8c660ae4257887cf66394862d21dbca4a6ddd26f04a3560410406a2f819a"
 dependencies = [
  "indexmap 2.12.1",
  "serde",
  "serde_spanned",
  "toml_datetime",
+ "toml_write",
  "winnow",
 ]
+
+[[package]]
+name = "toml_write"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5d99f8c9a7727884afe522e9bd5edbfc91a3312b36a77b5fb8926e4c31a41801"
 
 [[package]]
 name = "tracing"
@@ -2121,7 +2128,7 @@ dependencies = [
 [[package]]
 name = "wasmer"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "cfg-if",
  "indexmap 1.9.3",
@@ -2180,7 +2187,7 @@ dependencies = [
 [[package]]
 name = "wasmer-compiler"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "enumset",
  "loupe",
@@ -2229,7 +2236,7 @@ dependencies = [
 [[package]]
 name = "wasmer-compiler-singlepass"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "byteorder",
  "dynasm 1.2.3",
@@ -2265,7 +2272,7 @@ dependencies = [
 [[package]]
 name = "wasmer-derive"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "proc-macro-error",
  "proc-macro2",
@@ -2288,7 +2295,7 @@ dependencies = [
 [[package]]
 name = "wasmer-engine"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "backtrace",
  "enumset",
@@ -2309,7 +2316,7 @@ dependencies = [
 [[package]]
 name = "wasmer-engine-dylib"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "cfg-if",
  "enum-iterator",
@@ -2333,7 +2340,7 @@ dependencies = [
 [[package]]
 name = "wasmer-engine-universal"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "cfg-if",
  "enum-iterator",
@@ -2352,7 +2359,7 @@ dependencies = [
 [[package]]
 name = "wasmer-object"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "object 0.28.4",
  "thiserror 1.0.69",
@@ -2363,7 +2370,7 @@ dependencies = [
 [[package]]
 name = "wasmer-types"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "indexmap 1.9.3",
  "loupe",
@@ -2395,7 +2402,7 @@ dependencies = [
 [[package]]
 name = "wasmer-vm"
 version = "2.2.1"
-source = "git+https://github.com/TerraDharitri/wasmer?rev=3d69a1334f499737f96b3488fac748afeaa41b84#3d69a1334f499737f96b3488fac748afeaa41b84"
+source = "git+https://github.com/TerraDharitri/wasmer?rev=090ad17927fd1cbecb253a7b123d21e453fa13df#090ad17927fd1cbecb253a7b123d21e453fa13df"
 dependencies = [
  "backtrace",
  "cc",
@@ -2445,7 +2452,7 @@ dependencies = [
 [[package]]
 name = "wasmparser"
 version = "0.78.2"
-source = "git+https://github.com/TerraDharitri/wasm-tools?rev=1c30dd6c7961ede5397d2f76709bcd71565afb76#1c30dd6c7961ede5397d2f76709bcd71565afb76"
+source = "git+https://github.com/multiversx/wasm-tools?rev=90d489e90781320bdb6cffcb0a796138242c5a18#90d489e90781320bdb6cffcb0a796138242c5a18"
 
 [[package]]
 name = "wasmparser"
@@ -2523,7 +2530,7 @@ version = "0.1.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
 dependencies = [
- "windows-sys 0.52.0",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -2616,6 +2623,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f2f500e4d28234f72040990ec9d39e3a6b950f9f22d3dba18416c35882612bcb"
 dependencies = [
  "windows-targets 0.53.5",
+]
+
+[[package]]
+name = "windows-sys"
+version = "0.61.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc"
+dependencies = [
+ "windows-link",
 ]
 
 [[package]]
@@ -2749,9 +2765,9 @@ checksum = "d6bbff5f0aada427a1e5a6da5f1f98158182f26556f345ac9e04d36d0ebed650"
 
 [[package]]
 name = "winnow"
-version = "0.5.40"
+version = "0.7.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f593a95398737aeed53e489c785df13f3618e41dbcd6718c6addbf1395aa6876"
+checksum = "5a5364e9d77fcdeeaa6062ced926ee3381faa2ee02d3eb83a5c27a8825540829"
 dependencies = [
  "memchr",
 ]
