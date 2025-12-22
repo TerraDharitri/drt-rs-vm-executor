@@ -480,6 +480,8 @@ dependencies = [
 [[package]]
 name = "dharitri-vm-executor"
 version = "1.0.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "54226acfb3de16e3296569eae2bf811c9a8bfdccac1d4b7a7bededd0dfa001f6"
 dependencies = [
  "serde",
  "toml 0.8.23",
@@ -487,9 +489,7 @@ dependencies = [
 
 [[package]]
 name = "dharitri-vm-executor"
-version = "1.0.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "54226acfb3de16e3296569eae2bf811c9a8bfdccac1d4b7a7bededd0dfa001f6"
+version = "1.0.7"
 dependencies = [
  "serde",
  "toml 0.8.23",
@@ -500,7 +500,7 @@ name = "dharitri-vm-executor-c-api"
 version = "0.0.0"
 dependencies = [
  "cbindgen",
- "dharitri-vm-executor 1.0.6",
+ "dharitri-vm-executor 1.0.7",
  "dharitri-vm-executor-wasmer",
  "env_logger",
  "lazy_static",
@@ -515,7 +515,7 @@ version = "1.0.4"
 dependencies = [
  "chrono",
  "dharitri-vm-executor 1.0.6",
- "dharitri-vm-executor 1.0.6 (registry+https://github.com/rust-lang/crates.io-index)",
+ "dharitri-vm-executor 1.0.7",
  "log",
  "loupe",
  "thiserror 2.0.17",
@@ -526,10 +526,10 @@ dependencies = [
 
 [[package]]
 name = "dharitri-vm-executor-wasmer-experimental"
-version = "1.0.6"
+version = "1.0.7"
 dependencies = [
  "chrono",
- "dharitri-vm-executor 1.0.6",
+ "dharitri-vm-executor 1.0.7",
  "log",
  "loupe",
  "rc-new-cyclic-fallible",

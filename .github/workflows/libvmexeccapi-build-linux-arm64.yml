@@ -1,4 +1,4 @@
-name: libvmoaeccapi-build-linux-arm64
+name: libvmexeccapi-build-linux-arm64
 
 on:
   push:
@@ -33,12 +33,12 @@ jobs:
           tags: drt-builder
 
       - name: Copy library from Docker image
-        run: docker run --platform="linux/arm64" --rm drt-builder cat /data/libvmoaeccapi_arm.so > $GITHUB_WORKSPACE/libvmoaeccapi_arm.so
+        run: docker run --platform="linux/arm64" --rm drt-builder cat /data/libvmexeccapi_arm.so > $GITHUB_WORKSPACE/libvmexeccapi_arm.so
 
       - name: Save artifacts
         uses: actions/upload-artifact@v4
         with:
           name: lib-linux-arm
           path: |
-            libvmoaeccapi_arm.so
+            libvmexeccapi_arm.so
           if-no-files-found: error
