@@ -1,10 +1,10 @@
 [package]
 name = "dharitri-vm-executor-wasmer"
-version = "1.0.5"
+version = "1.0.4"
 edition = "2021"
 publish = false # cannot publish while still working with unpublished wasmer fork
 
-authors = ["contact@dharitri.org"]
+authors = ["Dharitri <contact@dharitri.org>"]
 license = "GPL-3.0-only"
 readme = "README.md"
 repository = "https://github.com/TerraDharitri/drt-rs-vm-executor"
@@ -20,7 +20,7 @@ categories = ["cryptography::cryptocurrencies"]
 default = ["dharitri-vm-executor"]
 
 [dependencies.dharitri-vm-executor]
-version = "1.0.5"
+version = "1.0.6"
 path = "../vm-executor"
 optional = true
 
@@ -28,19 +28,19 @@ optional = true
 ## to help with usage as a git-based dependency/
 [dependencies.dharitri-vm-executor-published]
 package = "dharitri-vm-executor"
-version = "1.0.5"
+version = "1.0.6"
 optional = true
 
 [dependencies]
-wasmer = { git = "https://github.com/TerraDharitri/wasmer", rev = "3d69a1334f499737f96b3488fac748afeaa41b84", default-features = false, features = [
+wasmer = { git = "https://github.com/TerraDharitri/wasmer", rev = "090ad17927fd1cbecb253a7b123d21e453fa13df", default-features = false, features = [
     "singlepass",
     "sys",
     "universal",
     "wat",
 ] }
 
-wasmer-vm = { git = "https://github.com/TerraDharitri/wasmer", rev = "3d69a1334f499737f96b3488fac748afeaa41b84" }
-wasmer-types = { git = "https://github.com/TerraDharitri/wasmer", rev = "3d69a1334f499737f96b3488fac748afeaa41b84" }
+wasmer-vm = { git = "https://github.com/TerraDharitri/wasmer", rev = "090ad17927fd1cbecb253a7b123d21e453fa13df" }
+wasmer-types = { git = "https://github.com/TerraDharitri/wasmer", rev = "090ad17927fd1cbecb253a7b123d21e453fa13df" }
 
 chrono = "0.4.23"
 log = "0.4.17"
