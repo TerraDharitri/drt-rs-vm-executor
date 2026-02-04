@@ -1,7 +1,7 @@
+use dharitri_vm_executor_wasmer::BasicExecutorService;
 use dharitri_vm_executor_wasmer::executor_interface::{
     CompilationOptionsLegacy, ExecutorService, InstanceLegacy, VMHooksLegacyDefault,
 };
-use dharitri_vm_executor_wasmer::BasicExecutorService;
 use wasmer::wat2wasm;
 
 const DUMMY_COMPILATION_OPTIONS: CompilationOptionsLegacy = CompilationOptionsLegacy {

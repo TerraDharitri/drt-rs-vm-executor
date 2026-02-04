@@ -1,6 +1,6 @@
 # dharitri-vm-executor-wasmer
 
-Wasmer adapter for the Dharitri VM, used in production.
+Wasmer adapter for the DharitrI VM, used in production.
 
 Currently used in 2 ways:
 - Imported in the CAPI project that is called from dharitri-chain-vm-go, the Go implementation of the SpaceVM.

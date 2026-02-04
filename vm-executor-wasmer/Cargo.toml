@@ -1,48 +1,38 @@
 [package]
 name = "dharitri-vm-executor-wasmer"
-version = "1.0.8"
-edition = "2021"
+version = "2.0.0"
+edition = "2024"
 publish = false # cannot publish while still working with unpublished wasmer fork
 
-authors = ["Dharitri <contact@dharitri.org>"]
+authors = ["DharitrI <contact@dharitri.com>"]
 license = "GPL-3.0-only"
 readme = "README.md"
-repository = "https://github.com/TerraDharitri/drt-vm-executor-rs"
+repository = "https://github.com/TerraDharitri/drt-rs-vm-executor"
 homepage = "https://www.dharitri.org/"
-documentation = "https://docs.www.dharitri.org/"
-description = "Dharitri VM Wasmer adapter (production)"
+documentation = "https://docs.dharitri.org/"
+description = "DharitrI VM Wasmer adapter (production)"
 keywords = ["dharitri", "blockchain", "VM"]
 categories = ["cryptography::cryptocurrencies"]
 
 [lib]
 
-[features]
-default = ["dharitri-vm-executor"]
-
 [dependencies.dharitri-vm-executor]
-version = "1.0.8"
-path = "../vm-executor"
-optional = true
-
-## Optional dependency to published interfaces crate,
-## to help with usage as a git-based dependency/
-[dependencies.dharitri-vm-executor-published]
-package = "dharitri-vm-executor"
-version = "1.0.8"
-optional = true
+# Not setting the path = "../vm-executor" here, because it would break
+# external consumers, which import it via gir revision. The path is overridden
+# in the workspace Cargo.toml via [patch.crates-io].
+version = "2.0.0"
 
 [dependencies]
-wasmer = { git = "https://github.com/TerraDharitri/wasmer", rev = "090ad17927fd1cbecb253a7b123d21e453fa13df", default-features = false, features = [
+wasmer = { git = "https://github.com/TerraDharitri/wasmer", rev = "73f2111abf85700dec4f11fb23ece01abc2065e3", default-features = false, features = [
     "singlepass",
     "sys",
     "universal",
     "wat",
 ] }
 
-wasmer-vm = { git = "https://github.com/TerraDharitri/wasmer", rev = "090ad17927fd1cbecb253a7b123d21e453fa13df" }
-wasmer-types = { git = "https://github.com/TerraDharitri/wasmer", rev = "090ad17927fd1cbecb253a7b123d21e453fa13df" }
+wasmer-vm = { git = "https://github.com/TerraDharitri/wasmer", rev = "73f2111abf85700dec4f11fb23ece01abc2065e3" }
+wasmer-types = { git = "https://github.com/TerraDharitri/wasmer", rev = "73f2111abf85700dec4f11fb23ece01abc2065e3" }
 
-chrono = "0.4.23"
-log = "0.4.17"
+log = "0.4"
 loupe = "0.1.3"
 thiserror = "2.0"
